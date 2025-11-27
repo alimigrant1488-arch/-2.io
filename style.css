@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    background: #000;
+}
+
+/* Вращающиеся секции */
+.rotating-section {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 12.5vh; /* 1/8 экрана */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10;
+}
+
+.top-rotator {
+    top: 0;
+    border-bottom: 2px solid #333;
+}
+
+.bottom-rotator {
+    bottom: 0;
+    border-top: 2px solid #333;
+}
+
+.rotating-image {
+    width: 50px;
+    height: 50px;
+    animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Горизонтальный скролл */
+.horizontal-scroll {
+    display: flex;
+    width: 400vw; /* 4 слайда по 100vw */
+    height: 75vh; /* Оставшееся пространство между вращателями */
+    position: absolute;
+    top: 12.5vh;
+    left: 0;
+    transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.slide {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-size: 3rem;
+    position: relative;
+}
+
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.slide h1 {
+    position: relative;
+    z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Боковые панели */
+.side-panel {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 200px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    z-index: 100;
+    opacity: 0;
+}
+
+.right-panel {
+    right: 0;
+    transform: translateX(100%) translateY(-50%);
+}
+
+.left-panel {
+    left: 0;
+    transform: translateX(-100%) translateY(-50%);
+}
+
+.side-panel.visible {
+    transform: translateX(0) translateY(-50%);
+    opacity: 1;
+}
+
+.panel-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.panel-btn {
+    padding: 10px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.panel-btn:hover {
+    background: #45a049;
+}
+
+/* Кастомный чекбокс */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+}
+
+.checkbox-container input {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    background: #ddd;
+    border-radius: 3px;
+    margin-left: 10px;
+    position: relative;
+    transition: background 0.3s;
+}
+
+.checkbox-container input:checked + .checkmark {
+    background: #4CAF50;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-container input:checked + .checkmark:after {
+    display: block;
+}
+
+/* Летающие изображения */
+.floating-image {
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.3s;
+    z-index: 50;
+}
+
+.floating-image:hover {
+    transform: scale(1.1);
+}
+
+/* Эффекты */
+.effect {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.mosaic {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(45deg, #ccc 25%, transparent 25%), 
+        linear-gradient(-45deg, #ccc 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #ccc 75%), 
+        linear-gradient(-45deg, transparent 75%, #ccc 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    animation: mosaicDisappear 1s forwards;
+}
+
+@keyframes mosaicDisappear {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    pointer-events: none;
+}
