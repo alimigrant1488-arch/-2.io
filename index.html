@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Горизонтальный скролл сайт</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Верхняя вращающаяся секция -->
+    <div class="rotating-section top-rotator">
+        <img src="https://i.pinimg.com/originals/46/74/30/467430c7966046066e2db60356547d86.png" alt="Rotating Icon" class="rotating-image">
+    </div>
+
+    <!-- Основной контейнер для горизонтального скролла -->
+    <main class="horizontal-scroll">
+        <section class="slide slide-1" data-bg="https://i.pinimg.com/originals/34/d6/c4/34d6c4e85786971335655ecbaffb5284.png">
+            <h1></h1>
+        </section>
+        <section class="slide slide-2" data-bg="https://avatars.mds.yandex.net/i?id=0c2be3e3ed5c61e24a0649c5c86d4776_l-3183039-images-thumbs&n=13">
+            <h1></h1>
+        </section>
+        <section class="slide slide-3" data-bg="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN7BuZW58Y_kqbJCoxT6_SOJAjB16JR8kWvw&s">
+            <h1></h1>
+        </section>
+        <section class="slide slide-4" data-bg="https://i.pinimg.com/originals/a1/07/53/a10753dffd33071ac5b2e7596d350b5e.png">
+            <h1></h1>
+        </section>
+    </main>
+
+    <!-- Нижняя вращающаяся секция -->
+    <div class="rotating-section bottom-rotator">
+        <img src="https://bumper-stickers.ru/42742-thickbox_default/nadpis-pokemon.jpg" alt="Rotating Icon" class="rotating-image">
+    </div>
+
+    <!-- Плавающие панели -->
+    <div class="side-panel right-panel">
+        <div class="panel-content">
+            <button class="panel-btn">Кнопка 1</button>
+            <button class="panel-btn">Кнопка 2</button>
+            <button class="panel-btn">Кнопка 3</button>
+            <label class="checkbox-container">
+                Закрепить
+                <input type="checkbox" id="pin-right">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="side-panel left-panel">
+        <div class="panel-content">
+            <button class="panel-btn">Кнопка A</button>
+            <button class="panel-btn">Кнопка B</button>
+            <button class="panel-btn">Кнопка C</button>
+            <label class="checkbox-container">
+                Закрепить
+                <input type="checkbox" id="pin-left">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Контейнер для летающих изображений -->
+    <div id="floating-images-container"></div>
+
+    <!-- Элементы для эффектов -->
+    <div id="effects-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
